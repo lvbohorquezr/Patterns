@@ -26,6 +26,9 @@ public class IoC {
 
         User user1 = container.new User(container.new MySqlDatabase());
         user1.add("This is other data");
+
+        User Ucris = container.new User(container.new MySqlDatabase());
+        Ucris.add("This is other data");
     }
 
     public class User {
@@ -66,6 +69,12 @@ public class IoC {
     public class OracleDatabase implements Database{
         public void persist(String data){
             System.out.println("Oracle has persisted: " + data);
+        }
+    }
+
+    public class IBM_Database implements Database{
+        public void persist(String data){
+            System.out.println("IBM has persisted: " + data)
         }
     }
 }
