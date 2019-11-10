@@ -26,10 +26,14 @@ public class IoC {
 
         User user1 = container.new User(container.new MySqlDatabase());
         user1.add("This is other data");
+
+        User Ucris = container.new User(container.new MySqlDatabase());
+        Ucris.add("This is other data");
         
         User user2 = container.new User(container.new OpenDatabase());
         user2.add("This is other data");
         
+
     }
 
     public class User {
@@ -74,10 +78,16 @@ public class IoC {
             System.out.println("Oracle has persisted: " + data);
         }
     }
+  
+    public class IBM_Database implements Database{
+        public void persist(String data){
+            System.out.println("IBM has persisted: " + data)
+
     
     public class OpenDatabase implements Database{
         public void persist(String data){
             System.out.println("OpenDB has persisted: " + data);
+
         }
     }
 }
