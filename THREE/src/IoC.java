@@ -29,6 +29,11 @@ public class IoC {
 
         User Ucris = container.new User(container.new MySqlDatabase());
         Ucris.add("This is other data");
+        
+        User user2 = container.new User(container.new OpenDatabase());
+        user2.add("This is other data");
+        
+
     }
 
     public class User {
@@ -55,6 +60,8 @@ public class IoC {
             database.persist(data);
         }
     }
+    
+    /* Dependency Inversoin Principle: we must rely on abstractions rather than concrete implementations */ 
 
     public interface Database{
         void persist(String data);
@@ -71,10 +78,16 @@ public class IoC {
             System.out.println("Oracle has persisted: " + data);
         }
     }
-
+  
     public class IBM_Database implements Database{
         public void persist(String data){
             System.out.println("IBM has persisted: " + data)
+
+    
+    public class OpenDatabase implements Database{
+        public void persist(String data){
+            System.out.println("OpenDB has persisted: " + data);
+
         }
     }
 }
